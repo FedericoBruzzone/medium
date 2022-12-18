@@ -170,3 +170,93 @@ The second criterion, called **scope**, specifies whether the pattern applies pr
 ![Figure 1.1: Design pattern relationship](https://github.com/FedericoBruzzone/medium/blob/main/Design%20Patterns%20%E2%80%8A-%E2%80%8A%20Introduction/img/3.png)
 
 <sup>Figure 1.1: Design pattern relationship</sup>
+
+## Finding Appropriate Objects
+
+Object-oriented programming are made up of objects. An **object** packages both data and the procedures that operate on that data. The procedures are typically called **methods** or **operations**. An object performs an operation when it receives a **request** from a **client**.
+
+The hard part of object-oriented design is decomposing a system into objects because there are many factor come into play: encapsulation, granularity, dependency, flexibility, performance, evolution, reusability, and on and on. 
+
+Object oriented design methodologies favor many different approaches. You can write a problem statement and create classes and operations. Or you can focus on the collaboration in your system. Or you can model the real world and translate objects found during analysis into design.
+
+Design patters help you identify less-obvious abstractions and the objects that can capture them. For example, objects that represent a process or algorithm don't occur in nature. The **strategy** pattern describes how to implement interchangeable families of algorithms. The state pattern represent each **state** of an entity as an object.
+
+## Determining Object Granularity
+
+Object can vary in size and number. They can represent everything down to the hardware or all the way up to entire software. 
+
+Design patterns address this issue as well. The **facade** pattern describes how to represent complete subsystem as object and the **flyweight** pattern describe how to support huge numbers of object at the finest granularity
+
+## Specifying Object Interfaces
+
+Every operation declared by an object specifies the operation's name, the objects it takes as parameters, and the operation's return value. This is known as the operation's **signature**. The set of all signatures defined by an object's operations is called the **interface** to the object.
+
+A **type** is a name used to denote a particular interface. We speak of an object as having the type "Window" if it accepts all requests for the operations defined in the interface named "Window." Two objects of the same type need only share parts of their interfaces. Interfaces can contain other interfaces as subsets. We say that a type is a **subtype** of another if its interface contains the interface of its **supertype.**
+
+When a request is sent to an object, the particular operation that's performed depends on both the request and the receiving object. The run-time association of a request to an object and one of its operations is known as **dynamic binding.**
+
+Moreover, dynamic binding lets you substitute objects that have identical interfaces for each other at run-time. This substitutability is known as **polymorphism**, and it's a key concept in object-oriented systems.
+
+Design patterns help you define interfaces by identifying their key elements and the kinds of data that get sent across an interface. 
+
+For example, the Memento pattern it describes how to encapsulate and save the internal state of an object so that the object can be restored to that state later.
+
+## Specifying Object Implementations
+
+An object's implementation is defined by its **class.**
+
+![](https://github.com/FedericoBruzzone/medium/blob/main/Design%20Patterns%20%E2%80%8A-%E2%80%8A%20Introduction/img/4.png)
+
+Objects are created by **instantiating** a class. The object is said to be an **instance** of the class. The process of instantiating a class allocates storage for the object's internal data (made up of **instance variables**) and associates the operations with these data.
+
+![](https://github.com/FedericoBruzzone/medium/blob/main/Design%20Patterns%20%E2%80%8A-%E2%80%8A%20Introduction/img/5.png)
+
+New classes can be defined in terms of existing classes using **class inheritance**. When a **subclass** inherits from a **parent class**, it includes the definitions of all the data and operations that the parent class defines.
+
+![](https://github.com/FedericoBruzzone/medium/blob/main/Design%20Patterns%20%E2%80%8A-%E2%80%8A%20Introduction/img/6.png)
+
+An **abstract class** is one whose main purpose is to define a common interface for its subclasses. An abstract class will defer some or all of its implementation to operations defined in subclasses; hence an abstract class cannot be instantiated. A **concrete class** may **override** an operation defined by its parent class. Overriding gives subclasses a chance to handle requests instead of their parent classes.
+
+![](https://github.com/FedericoBruzzone/medium/blob/main/Design%20Patterns%20%E2%80%8A-%E2%80%8A%20Introduction/img/7.png)
+
+A **mixin class** is a class that's intended to provide an optional interface or functionality to other classes. It's similar to an abstract class in that it's not intended to be instantiated. Mixin classes require multiple inheritance:
+
+![](https://github.com/FedericoBruzzone/medium/blob/main/Design%20Patterns%20%E2%80%8A-%E2%80%8A%20Introduction/img/8.png)
+
+## Class versus Interface Inheritance
+
+It's important to understand the difference between an object's class and its type.
+
+An object's class defines how the object is implemented. The class defines the object's internal state and the implementation of its operations. In contrast, an object's type only refers to its interface – the set of requests to which it can respond. An object can have many types, and objects of different classes can have the same type.
+
+It's also important to understand the difference between class inheritance and interface inheritance (or subtyping). Class inheritance defines an object's implementation in terms of another object's implementation. In short, it's a mechanism for code and representation sharing. In contrast, interface inheritance (or subtyping) describes when an object can be used in place of another.
+
+Many of the design patterns depend on this distinction. For example, in the Composite pattern, Component defines a common interface, but Composite often defines a common implementation. Observer, State, and Strategy are often implemented with abstract classes.
+
+## Putting Reuse Mechanisms to Work
+
+> Inheritance versus Composition
+
+The two most common techniques for reusing functionality in object-oriented systems are class inheritance and **object composition**. As I've explained, class inheritance lets you define the implementation of one class in terms of another's. Reuse by subclassing is often referred to as **white-box reuse.** 
+
+Object composition is an alternative to class inheritance. Here, new functionality is obtained by assembling or composing objects to get more complex functionality. Object composition requires that the objects being composed have well-defined interfaces. This style of reuse is called **black-box reuse**, because no internal details of objects are visible. 
+
+Inheritance and composition each have their advantages and disadvantages. Class inheritance is defined statically at compile-time. It also make it easier to modify the implementation being reused. But you can't change the implementations inherit from parent classes at run-time, because inheritance is defined at compile-time. The implementation of a subclass becomes so bound up with the implementation of its parent class that any change in the parent's implementation will force the subclass to change.
+
+Object composition is defined dynamically at run-time through objects acquiring references to other objects. Composition requires objects to respect each others' interfaces. Objects are accessed solely through their interfaces, we don't break encapsulation. Any object can be replaced at run-time by another as long as it has the same type. 
+
+Favoring object composition over class inheritance helps you keep each class encapsulated and focused on one task. Your classes and class hierarchies will remain small. On the other hand, a design based on object composition will have more objects.
+
+> Delegation
+
+**Delegation** is a way of making composition as powerful for reuse as inheritance [Lie86, JZ91]. In delegation, *two* objects are involved in handling a request: a receiving object delegates operations to its **delegate.**
+
+Differs from inheritance because it is no longer accessed via this or *self*. For example, instead of making class Window a subclass of Rectangle, the Window class might reuse the behavior of Rectangle by keeping a Rectangle instance variable and *delegating* Rectangle-specific behavior to it.
+
+![](https://github.com/FedericoBruzzone/medium/blob/main/Design%20Patterns%20%E2%80%8A-%E2%80%8A%20Introduction/img/9.png)
+
+The main advantage of delegation is that it make it easy to compose behaviors at run-time and to change the way they are composed. If we want, our window can become a circular at run-time, assuming Rectangle and Circle have the same type.
+
+Delegation has a disadvantage it shares with other techniques that make software more flexible through object composition: Dynamic, highly parameterized software is harder to understand than more static software.
+
+Several design pattern use delegation. The State, Strategy, and Visitor patterns depend on it.

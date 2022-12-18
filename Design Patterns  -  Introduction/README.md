@@ -260,3 +260,11 @@ The main advantage of delegation is that it make it easy to compose behaviors at
 Delegation has a disadvantage it shares with other techniques that make software more flexible through object composition: Dynamic, highly parameterized software is harder to understand than more static software.
 
 Several design pattern use delegation. The State, Strategy, and Visitor patterns depend on it.
+
+> Inheritance versus Parameterized Types
+
+Another (not strictly object-oriented) technique for reusing functionality is through **parameterized types**, also known as **generics** and **templates**. This technique lets you define a type without specifying all the other types it uses.
+
+Parameterized types give us a third way (in addition to class inheritance and object composition) to compose behavior in object-oriented systems. Many designs can be implemented using any of these three techniques.
+
+There are important differences between these techniques. Object composition lets you change the behavior being composed atrun-time, but it also requires indirection and can be less efficient. Inheritance lets you provide default implementations for operations and lets subclasses override them. Parameterized typeslet you change the types that a class can use. But neither inheritance nor parameterized types can change at run-time.

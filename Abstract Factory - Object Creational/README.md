@@ -15,3 +15,19 @@ We can solve this problem by defining an abstract WidgetFactory class that decla
 There is a concrete subclass of WidgetFactory for each look-and-feel standard. Client create widgets solely through the WidgetFactory interface and have no knowledge of the classes that implement widget for a particular look and feel.
 
 A WidgetFactory also enforces dependencies between the concrete widget classes. A **Dummy** scroll bar should be used with a **Dummy** button and a **Dummy** text editor, and that constraint is enforced automatically as a consequence of using a **DummyWidgetFactory**.
+
+## Applicability 
+
+Use the Abstract Factory pattern when
+
+- a system should be independent of how its product are created, composed, and represented.
+
+- a system should be configured with one of multiple families of products.
+
+- a family of related product objects is designed to be used together, and you need to enforce this constraint.
+
+- you want to provide a class library of products, and you want to reveal just their interfaces, not their implementations.
+
+## Structure
+
+![](https://github.com/FedericoBruzzone/medium/blob/main/Abstract%20Factory%20-%20Object%20Creational/img/2.png)

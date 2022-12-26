@@ -89,3 +89,4 @@ The Abstract Factory pattern has the following benefits and liabilities:
 4. *Supporting new kind of products is difficult.* Extending abstract factories to produce new kinds of Products is not easy. Supporting new kinds of products requires extending the factory interface, which involves changing the AbstractFactory class and all of its subclasses. (Solution in the next section)
 
 # Implementation
+

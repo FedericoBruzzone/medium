@@ -1,4 +1,5 @@
-public class Main {
+public class MainAbstractFactory {
+
   public static void main(String[] args) {
     MazeGame_Factory game = new MazeGame_Factory();
 
@@ -7,4 +8,5 @@ public class Main {
 
     game.CreateMaze(bombedFactory /* factory */);
   }  
+  
 }

@@ -132,7 +132,7 @@ public class MazeFactory {
 }
 ```
 
-Here is a version of *CreateMaze* that take *MazeFacotry* as a parameter. *CreateMaze* builds a small maze consisting of two rooms with a door between them.
+Here is a version of *CreateMaze* that take *MazeFactory* as a parameter. *CreateMaze* builds a small maze consisting of two rooms with a door between them.
 
 ```Java
 public class MazeGame_Factory {
@@ -164,7 +164,7 @@ public class MazeGame_Factory {
 
 Now suppose we want to make a maze game in which a room can have a bomb set in it, and if the bomb goes off, it will damage the walls.
 
-We can make a subclass of Room ([here 🔗](https://github.com/FedericoBruzzone/medium/tree/main/commoncode)) keep track if a room has a bomb in it.
+We can make a subclass of *Room* ([here 🔗](https://github.com/FedericoBruzzone/medium/tree/main/commoncode)) keep track if a room has a bomb in it.
 
 ```Java
 public class RoomWithABomb extends Room {
@@ -178,6 +178,24 @@ public class RoomWithABomb extends Room {
   public void setBombDamage(int bombDamage) {
     this.bombDamage = bombDamage;
   } 
+
+}
+```
+
+We also need a subclass of *Wall* to keep track of the damage.
+
+```Java
+public class BombedWall extends Wall {
+  
+  int wallDamage = 0;
+  
+  public BombedWall() {
+    super();
+  }  
+
+  public void hitWall(int bombDamage) {
+    this.wallDamage = bombDamage;
+  }
 
 }
 ```

@@ -2,6 +2,8 @@
 
 ## A summary of GoF Design Patters
 
+---
+
 # Intent
 
 Provide an interface for creating families of related or dependent objects without specifying their concrete class.
@@ -90,3 +92,12 @@ The Abstract Factory pattern has the following benefits and liabilities:
 
 # Implementation
 
+Here are some useful techniques for implementing the Abstract Factory pattern.
+
+1. *Factories as singletons.* An application typically needs only one instance of a ConcreteFactory per product family.
+
+2. *Creating the products.* AbstractFactory only declares an *interface* for creating products. It's up to ConcreteProduct subclasses to actually create them. The most common way to do this is to define a factory method for each product. A concrete factory will specify  its products by overriding the factory method for each. While this implementation is simple, it requires a new concrete factory subclass for each product even if the product families differ only slightly. In many product families are possible, the concrete factory can be implemented using Prototype pattern.
+
+3. *Defining extensible factories.* All products are returned to the client with the *same* abstract interface as given by the return type. The client will not be able to differentiate of make safe assumpion about the class of a product. The client could perform a downcast, that is not always feasible of safe, beacuse the downcasting can fail.
+
+# Sample Code

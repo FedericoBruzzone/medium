@@ -103,3 +103,31 @@ Here are some useful techniques for implementing the Abstract Factory pattern.
 An inherent problem remains: All products are returned to the client with the same abstract interface as given by the return type. The client will not be able to differentiate of make safe assumption about the class of a product. The client could perform a downcast, that is not always feasible of safe, because the downcasting can fail.
 
 # Sample Code
+
+We will apply the Abstract Factory pattern to creating the mazes.
+
+To better understand the following code and the classes used look 
+
+[**>>> here🔗! <<<**](https://github.com/FedericoBruzzone/medium/tree/main/commoncode)
+
+Class *MazeFactory* can create components of mazes. It build rooms, walls, and doors between rooms. For instance, it might be used by a program that builds mazes randomly. Programs that build mazes take a *MazeFactory* as an argument so that the programmer can specify the classes of rooms, walls, and doors to construct.
+
+```Java
+public class MazeFactory {
+
+  public MazeFactory() {}
+
+  public Maze MakeMaze() 
+    { return new Maze(); }
+
+  public Wall MakeWall() 
+    { return new Wall(); }
+
+  public Room MakeRoom(int n) 
+    { return new Room(n); }
+
+  public Door MakeDoor(Room r1, Room r2)
+    { return new Door(r1, r2); }
+
+}
+```

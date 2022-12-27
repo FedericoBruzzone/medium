@@ -5,7 +5,7 @@ public class MazeGame_Factory {
   public Maze CreateMaze(MazeFactory factory) {
     Maze aMaze   = factory.MakeMaze();
     Room r1      = factory.MakeRoom(1);
-    Room r2      = factory.MakeRoom(1);
+    Room r2      = factory.MakeRoom(2);
     Door theDoor = factory.MakeDoor(r1, r2);
 
     r1.SetSide(Direction.North, factory.MakeWall());

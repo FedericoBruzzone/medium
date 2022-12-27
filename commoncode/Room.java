@@ -1,4 +1,4 @@
-package CommonCode;
+package commoncode;
 
 public class Room extends MapSite {
     
@@ -12,8 +12,8 @@ public class Room extends MapSite {
 
   public MapSite GetSide(Direction d) { return null; }
 
-  public void SetSide(Direction d, MapSite ms) { /* ... */ }
+  public void SetSide(Direction d, MapSite ms) {}
   
-  public void Enter() { /* ... */ }
+  public void Enter() {}
 
 }

@@ -1,6 +1,6 @@
-package CommonCode;
+package commoncode;
 
-public class MazeGameFirst {
+public class MazeGame_First {
 
   public Maze CreateMaze() {
     Maze aMaze   = new Maze();

@@ -98,6 +98,8 @@ Here are some useful techniques for implementing the Abstract Factory pattern.
 
 2. *Creating the products.* AbstractFactory only declares an *interface* for creating products. It's up to ConcreteProduct subclasses to actually create them. The most common way to do this is to define a factory method for each product. A concrete factory will specify  its products by overriding the factory method for each. While this implementation is simple, it requires a new concrete factory subclass for each product even if the product families differ only slightly. In many product families are possible, the concrete factory can be implemented using Prototype pattern.
 
-3. *Defining extensible factories.* All products are returned to the client with the *same* abstract interface as given by the return type. The client will not be able to differentiate of make safe assumpion about the class of a product. The client could perform a downcast, that is not always feasible of safe, beacuse the downcasting can fail.
+3. *Defining extensible factories.* AbstractFactory usually defines a different operation for each kind of product it can produce. Adding a new kind of product requires changing the AbstractFactory interface and all the classes that depends on it. A more flexible but less safe design is to add a parameter to operations that create objects. This parameter specifies the kind of object to be created.
+
+An inherent problem remains: All products are returned to the client with the same abstract interface as given by the return type. The client will not be able to differentiate of make safe assumption about the class of a product. The client could perform a downcast, that is not always feasible of safe, because the downcasting can fail.
 
 # Sample Code

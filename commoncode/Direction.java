@@ -1,4 +1,4 @@
-package CommonCode;
+package commoncode;
 
 public enum Direction {
     North, 

@@ -1,4 +1,4 @@
-package CommonCode;
+package commoncode;
 
 public class Door extends MapSite {
 
@@ -14,5 +14,5 @@ public class Door extends MapSite {
   
   public Room OtherSideFrom(Room r) { return null; }
 
-  public void Enter() { /* ... */ }
+  public void Enter() {}
 }

@@ -1,6 +1,6 @@
-import CommonCode.*;
+import commoncode.*;
 
-public class MazeGameFactory {
+public class MazeGame_Factory {
 
   public Maze CreateMaze(MazeFactory factory) {
     Maze aMaze   = factory.MakeMaze();

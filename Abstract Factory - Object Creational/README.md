@@ -199,3 +199,35 @@ public class BombedWall extends Wall {
 
 }
 ```
+
+The last class we defined is *BombedMazefactory*, a subclass of *MazeFactory* (defined above). This class only need to override two functions:
+
+```Java
+
+public class BombedMazeFactory extends MazeFactory {
+     
+  public Wall MakeWall() 
+    { return new BombedWall(); }
+
+  public Room MakeRoom(int n) 
+    { return new RoomWithABomb(n); }
+
+}
+```
+
+To build a simple maze that can contains bomb or not, we simply call *CreateMaze* with a *BombedMazeFactory* or *MazeFactory*.
+
+```Java
+public class MainAbstractFactory {
+
+  public static void main(String[] args) {
+    MazeGame_Factory game = new MazeGame_Factory();
+
+    MazeFactory factory = new MazeFactory();
+    BombedMazeFactory bombedFactory = new BombedMazeFactory();
+
+    game.CreateMaze(bombedFactory /* factory */);
+  }  
+  
+}
+```

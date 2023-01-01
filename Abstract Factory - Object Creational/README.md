@@ -2,6 +2,10 @@
 
 ## A summary of GoF Design Patters
 
+![](https://github.com/FedericoBruzzone/medium/blob/main/Abstract%20Factory%20-%20Object%20Creational/img/cover.png)
+
+By Dmitry Zhart (![refactoring.guru](https://refactoring.guru/))
+
 ---
 
 # Intent

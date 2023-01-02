@@ -58,13 +58,13 @@ Use the Abstract Factory pattern when
 
 *(Window, ScrollBar)*
 
-- declares an interface for a type of product obejct.
+- declares an interface for a type of product object.
 
 ## ConcreteProduct
 
 *(DummyWindow, DummyScrollBar)*
 
-- defines a product object to be created by the corrisponding concrete factory.
+- defines a product object to be created by the corresponding concrete factory.
 
 - implements the AbstractProduct interface.
 

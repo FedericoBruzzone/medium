@@ -2,6 +2,10 @@
 
 ## A summary of GoF Design Patters
 
+![](https://github.com/FedericoBruzzone/medium/blob/main/Abstract%20Factory%20-%20Object%20Creational/img/cover.png)
+
+By **Dmitry Zhart** ([refactoring.guru](https://refactoring.guru/))
+
 ---
 
 # Intent
@@ -231,3 +235,15 @@ public class MainAbstractFactory {
   
 }
 ```
+
+Notice that the *MazeFactory* is just a collection of factory methods. This is the most common way to implement the Abstract Factory pattern. Also note that MazeFactory is not an abstract class; it acts as both AbstractFactory *and* ConcreteFactory.
+
+# Known Uses
+
+InterViews uses the "Kit" suffix [Lin92] to denote AbstractFactory classes. It defines WidgetKit and DialogKit abstract factories for generating look-and-feel-specific user interface objects. InterViews also includes a LayoutKit that generates different composition objects depending on the layout desired.
+
+# Related Patterns
+
+AbstractFactory classes are often implemented with factory methods, but they can also implemented using Prototype.
+
+A concrete factory is often a singleton.

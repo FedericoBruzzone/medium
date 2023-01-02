@@ -271,3 +271,31 @@ Another (not strictly object-oriented) technique for reusing functionality is th
 Parameterized types give us a third way (in addition to class inheritance and object composition) to compose behavior in object-oriented systems. Many designs can be implemented using any of these three techniques.
 
 There are important differences between these techniques. Object composition lets you change the behavior being composed atrun-time, but it also requires indirection and can be less efficient. Inheritance lets you provide default implementations for operations and lets subclasses override them. Parameterized typeslet you change the types that a class can use. But neither inheritance nor parameterized types can change at run-time.
+
+## Relating Run-Time and Compile-Time Structures
+
+Consider the distinction between object **aggregation** and **acquaintance** and how differently they manifest themselves at compile- and run-times. Aggregation implies that one object owns or is responsible for another object. Generally we speak of an object having or being part of another object.
+
+Acquaintance implies that an object merely knows of another object. Sometimes acquaintance is called "association" or the "using" relationship. Acquainted objects may request operations of each other, but they aren't responsible for each other.
+
+In this diagrams, a plain arrowhead line denotes acquaintance. An arrowhead line with a diamond at its base denotes aggregation:
+
+![](https://github.com/FedericoBruzzone/medium/blob/main/Design%20Patterns%20%E2%80%8A-%E2%80%8A%20Introduction/img/10.png)
+
+## Designing for Change
+
+The key to maximizing reuse lies in anticipating new requirements and changes to existing requirements, and in designing your systems so that they can evolve accordingly.
+
+Design patterns help you avoid this by ensuring that a system can change in specific ways. 
+
+There are some common causes of redesign along with the design pattern(s) that address them:
+
+- *Creating an object by specifying a class explicitly.* Specifying a class name when you create an object commits you a particular implementation instead of a particular interface. Design pattern: Abstract Factory, Factory Method, Prototype. 
+
+- *Dependence on specific operations.* When you specify a particular operation, you commit to one way of satisfying a request. By avoiding hard-coded request, you make it easier to change the way a request gets satisfied both at compiled-time and run-time. Design pattern: Chain of Responsibility, Command.
+
+- *Algorithmic dependencies.* Algorithms are often extended, optimized, and replaced during development and reuse. Object that depend on an algorithm will have to change when the algorithm changes. Therefore algorithms that are likely to change should be isolated. Design patterns: Builder, Iterator, Strategy, Template Method, Visitor.
+
+- *Tight coupling* Tight coupling leads to monolithic systems, where you can't change or remove a class without understanding and changing many other classes. The system becomes a dense mass that's hard to learn, port, and maintain. Design patterns use techniques such as abstract coupling and layering to promote loosely coupled systems. Design patterns: Abstract Factory, Bridge, Chain of Responsibility, Command, Facade, Mediator, Observer.
+
+- *Extending functionality by subclassing* Customizing an object by subclassing often isn't easy. Every new class has a fixed implementation overhead. Defining a subclass also requires an in-depth understanding of the parent class. Object composition in general and delegation in particular provide flexible alternatives to inheritance for combining behavior. New functionality can be added to an application by composing existing objects in new ways rather than by defining new subclasses of existing classes. Design patterns: Bridge, Chain of Responsibility, Composite, Decorator, Observer, Strategy.

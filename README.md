@@ -8,6 +8,5 @@ In this repository there are my Medium atricles written in markdown.
 - [**Abstract Factory - Object Creational**](https://github.com/FedericoBruzzone/medium/tree/main/Abstract%20Factory%20-%20Object%20Creational)
 
 
-
 ### Troubleshooting
 If you find problems, please contact me at federico.bruzzone.i@gmail.com.

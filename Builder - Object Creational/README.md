@@ -10,6 +10,8 @@ By **Dmitry Zhart** ([refactoring.guru](https://refactoring.guru/))
 
 # Intent
 
+Separate the construction of a complex object from its representation so that the same construction process can create different representation.
+
 # Also Known As
 
 ...

@@ -33,9 +33,47 @@ The Builder pattern captures all these relationships. Each converter is called a
 
 # Applicability 
 
+Use the Builder pattern when
+
+- the algorithm for creating a complex object should be independent of the parts that make up the object and how they are assembled.
+
+- the construction process must allow different representations for the object that is constructed.
+
 # Structure
 
+![](https://github.com/FedericoBruzzone/medium/blob/main/Builder%20-%20Object%20Creational/img/2.png)
+
 # Participants
+
+## Builder
+
+*(TextConverter)*
+
+- specifies an abstract interface for creating parts of a Product object.
+
+## ConcreteBuilder
+
+*(ASCIIConverter, TeXConverter, TextWidgetConverter)*
+
+- constructs and assembles parts of the product by implementing the Builder interface.
+
+- defines and keeps track of the representation it creates.
+
+- provides an interface for retrieving the product.
+
+## Director
+
+*(RTFReader)*
+
+- constructs an object using the Builder interface.
+
+## Product
+
+*(ASCIIText, TeXText, TextWidget)*
+
+- represents the complex object under construction. ConcreteBuilder builds the product's internal representation and defines the process by which it is assembled.
+
+- includes classes that define the constituent parts, including interface for assembling the parts into the final result.
 
 # Collaborations
 

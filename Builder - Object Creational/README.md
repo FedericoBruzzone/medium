@@ -77,11 +77,63 @@ Use the Builder pattern when
 
 # Collaborations
 
+- The client creates the Director object and configures it with the desired Builder object.
+
+- Director norifies the builder whenever a part of the product should be built.
+
+- Builder handles requests from the director and adds parts to the product.
+
+- The client retrieves the product from the builder.
+
+![](https://github.com/FedericoBruzzone/medium/blob/main/Builder%20-%20Object%20Creational/img/3.png)
+
 # Consequences
+
+Here are key consequences of the Builder pattern:
+
+1. *It lets you vary a product's internal representation.* The Builder object provides the director with an abstract interface for constructing the product. The interface lets the builder hide the representation and internal structure of the product.
+
+2. *It isolates code for construction and representation.* The Builder pattern improves modularity by encapsulating the way a complex object is constructed and represented. Clients needn't know anything about the classes that define the product's internal structure.
+
+3. *It gives you finer control over the construction process.* Unlike creational patterns that constructed products in one shot, the Builder pattern constructs the product step by step under the director's control.
 
 # Implementation
 
+Typically there is an abstract Builder class that defines an operation for each component that a directory may ask it to create.
+
+Here are other implementation issues to consider:
+
+1. *Assemply and construction interface.* Builders construct their products in step-by-step fashion. A key design issue concerns the model for the construction and assembly process. A model where the results of construction requests are simply appended to the product is usually sufficient. But sometimes you might need access to part of the product constructed earlier.
+
+2. *Why no abstract class for products?* In common case, the product produced by the concrete builders differ so greatly in their representation that there is little to gain form giving different products a common parent class.
+
+3. *Empty methods as default in Builder.* They are defined as empty methods instead, letting clients override only the operation they are interested in.
+
 # Sample Code
+
+To better understand the following code and the classes used look 
+
+[**>>> here🔗! <<<**](https://github.com/FedericoBruzzone/medium/tree/main/commoncode)
+
+We will define a variant of the [*CreateMaze*](https://github.com/FedericoBruzzone/medium/tree/main/commoncode) member function that takes a builder of class *MazeBuilder* as an argument.
+
+The *MazeBuilder* class defines the following interface for building mazes:
+
+```Java
+public class MazeBuilder {
+    
+  protected MazeBuilder() {}
+    
+  public void BuildMaze() {}
+
+  public void BuildRoom(int room) {}
+
+  public void BuildDoor(int roomFrom, int roomTo) {}
+ 
+  public Maze GetMaze() { return null; }
+
+}
+```
 
 # Known Uses
 

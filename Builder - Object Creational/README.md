@@ -135,6 +135,102 @@ public class MazeBuilder {
 }
 ```
 
+This interface can create three thing: (1) the maze, (2) rooms with a particular room number and (3) doors between numbered rooms. The *GetMaze* operation returns the maze to the client. 
+
+All the maze-building operations of *MazeBuilder* do nothing by default.
+
+Given the *MazeBuilder* interface, we can change the *CreateMaze* member function to take this builder as a parameter.
+
+```Java
+public class MazeGame_Builder {
+    
+  public Maze CreateMaze(MazeBuilder builder) {
+    builder.BuildMaze();
+    
+    builder.BuildRoom(1);
+    builder.BuildRoom(2);
+    builder.BuildDoor(1, 2);
+    
+    return builder.GetMaze();
+  }
+
+}
+```
+
+Compare this version of *CreateMaze* with the [original](https://github.com/FedericoBruzzone/medium/blob/main/commoncode/MazeGame_First.java). Notice how the builder hides the internal representation of the Maze. This make it easier to change the way a maze is represented, since none of the clients of *MazeBuilder* has to be changed.
+
+Like the other creational patterns, the Builder pattern encapsulates how objects get created. That means we can reuse *MazeBuilder* to build different kind of mazes.
+
+Note that *MazeBuilder* does not create mazes itself; it main purpose is just to define an interface for creating mazes. It defines empty implementations primarily for convenience. Subclasses of *MazeBuilder* so the actual work.
+
+The subclass *StandardMazeBuilder* is an implementation that builds simple mazes.
+
+```Java
+public class StandardMazeBuilder extends MazeBuilder {
+    
+  private Maze _currentMaze;
+
+  public StandardMazeBuilder() {
+    this._currentMaze = null;
+  }
+
+  @Override public void BuildMaze() {
+    this._currentMaze = new Maze();
+  }
+
+  @Override public void BuildRoom(int n) {
+    if (_currentMaze.RoomNo(n) != null) {
+      Room room = new Room(n);
+      this._currentMaze.AddRoom(room);
+
+      room.SetSide(Direction.North, new Wall());
+      room.SetSide(Direction.South, new Wall());
+      room.SetSide(Direction.East,  new Wall());
+      room.SetSide(Direction.West,  new Wall());
+    }
+  }
+
+  @Override public void BuildDoor(int n1, int n2) {
+    Room r1 = this._currentMaze.RoomNo(n1);
+    Room r2 = this._currentMaze.RoomNo(n2);
+    Door d = new Door(r1, r2);
+
+    r1.SetSide(this.CommonWall(r1, r2), d);
+    r2.SetSide(this.CommonWall(r2, r1), d);
+  }
+
+  private Direction CommonWall(Room r1, Room r2) { 
+    return null;
+  }
+
+  @Override public Maze GetMaze() {
+    return this._currentMaze;
+  }
+
+}
+```
+
+*CommonWall* is a utility operation that determines the direction of the common wall between two rooms.
+
+Clients can now use *CreateMaze* in conjunction with *StandardMazeBuilder* to create a maze:
+
+```Java
+public class ClientBuilder {
+  
+  public static void main(String[] args) {
+    Maze maze;
+    MazeGame_Builder game = new MazeGame_Builder();
+    StandardMazeBuilder builder = new StandardMazeBuilder();
+
+    game.CreateMaze(builder);
+    maze = builder.GetMaze();
+  }
+
+}
+```
+
+We could have put all the *StandardMazeBuilder* operations in *Maze* and let each *Maze* build itsef. But making *Maze* smaller makes it easier to understand and modify, and *StandardMazeBuilder* is easy to separate from *Maze*.
+
 # Known Uses
 
 # Related Patterns

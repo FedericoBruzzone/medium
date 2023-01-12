@@ -233,4 +233,19 @@ We could have put all the *StandardMazeBuilder* operations in *Maze* and let eac
 
 # Known Uses
 
+The RTF converter application is from ET++ [WGM88]. Its text building block uses a builder to process text sorted in the RTF format.
+
+Builder is a common pattern in Smalltalk-80 [Par90]:
+
+- The Parser class in the compiler subsystem is a Director that takes a ProgramNodeBuilder object as an argument.
+
+- ClassBuilder is a builder that Classes use to create subclasses for themselves.
+
+- ByteCodeStream is a builder that creates a compiled method as a byte array.
+
+The Service Configurator framework from the Adaptive Communications Environment uses a builder to construct network service components that are linked into a server at run-time [SS94].
+
 # Related Patterns
+
+Abstract Factory is similar to Builder in that it too may construct complex object. The primary difference is that the Builder pattern focuses on constructing a complex object step by step. Abstract Factory's emphasis is on families of product objects. Builder returns the product as a final step, but as far as Abstract Factory pattern is concerned, the product gets returned immediately.
+A Composite is what the builder often builds.

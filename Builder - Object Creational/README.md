@@ -248,4 +248,5 @@ The Service Configurator framework from the Adaptive Communications Environment 
 # Related Patterns
 
 Abstract Factory is similar to Builder in that it too may construct complex object. The primary difference is that the Builder pattern focuses on constructing a complex object step by step. Abstract Factory's emphasis is on families of product objects. Builder returns the product as a final step, but as far as Abstract Factory pattern is concerned, the product gets returned immediately.
+
 A Composite is what the builder often builds.

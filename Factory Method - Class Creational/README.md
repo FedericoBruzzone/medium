@@ -27,7 +27,18 @@ Because the particular Document subclass to instantiate is application-specific,
 
 The Factory Method pattern offers a solution. It encapsulates the knowledge of which Document subclass to create and moves this knowledge out of the framework.
 
-Application subclass redefine an abstract CreateDocument operation on Application to return the appropriate Document subclass. Once an Application subclass is instantiated, it can then instantiate application-specific Documents without knowing their class. We call CreateDocument a factory method because it is responsible for "manufacturing" an object.
+Application subclass redefine an abstract CreateDocument operation on Application to return the appropriate Document subclass. Once an Application subclass is instantiated, it can then instantiate application-specific Documents without knowing their class. We call CreateDocument a **factory method** because it is responsible for "manufacturing" an object.
 
 # Applicability
 
+Use the Factory Method pattern when
+
+- a class can't anticipate the class of obejcts it must create.
+
+- a class wants its subclasses to specify the objects it creates.
+
+- classes delegate responsibility to one of several helper subclasses, and you want to localize the knowledge of which helper subclass is the delegate.
+
+# Structure
+
+![](https://github.com/FedericoBruzzone/medium/blob/main/Factory%20Method%20-%20Class%20Creational/img/2.png)

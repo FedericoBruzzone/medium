@@ -95,3 +95,8 @@ The Figure class provides a CreateManipulator factory method that lets client cr
 
 Notice how the factory method defines the connection between the two class hierarchies. It localize knowledge of which classes belong together.
 
+# Implementation
+
+1. *The two varieties*. The two main variations of the Factory Method pattern are (1) the case when the Creator class is an abstract class and does not provide an implementation for the factory method it declares, and (2) the case when the Creator is a concrete class and provide a default implementation for the factory method. The first case *requires* subclasses to define an implementation, because there is no reasonable default. In the second case, the concrete Creator uses the factory method primarily for flexibility.
+
+2. *Parameterized factory methods*.

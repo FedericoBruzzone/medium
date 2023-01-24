@@ -1,4 +1,4 @@
-# Builder - Object Creational
+# Builder pattern - Object Creational
 
 ## A summary of GoF Design Patters
 

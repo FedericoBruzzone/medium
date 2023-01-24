@@ -1,4 +1,4 @@
-# Abstract Factory - Object Creational
+# Abstract Factory pattern - Object Creational
 
 ## A summary of GoF Design Patters
 

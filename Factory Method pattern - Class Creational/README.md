@@ -1,4 +1,4 @@
-# Factory Method - Class Creational
+# Factory Method pattern - Class Creational
 
 ## A summary of GoF Design Patters
 
@@ -99,4 +99,82 @@ Notice how the factory method defines the connection between the two class hiera
 
 1. *The two varieties*. The two main variations of the Factory Method pattern are (1) the case when the Creator class is an abstract class and does not provide an implementation for the factory method it declares, and (2) the case when the Creator is a concrete class and provide a default implementation for the factory method. The first case *requires* subclasses to define an implementation, because there is no reasonable default. In the second case, the concrete Creator uses the factory method primarily for flexibility.
 
-2. *Parameterized factory methods*.
+2. *Parameterized factory methods*. Another variation on the pattern lets the factory method create *multiple* kinds of products. The factory method takes a parameter that identifies the kind of object to create. All objects the factory method creates will share the Product interface.
+
+3. *Language-specific variants and issues*. Different languages lend themselves to other interesting variations and caveats. Smalltalk programs often use a method that returns the class of the object to be instantiated. A Creator factory method can use this value to create a product, and a ConcreteCreator may store or even compute this value. The result is an even later binding for the type of ConcreteProduct to be instantiated.
+
+4. *Using templates to avoid subclassing*. Another potential problem with factory methods is that they might force you to subclass just to create the appropriate Product objects. Another way to get around this in C++ is to provide a template subclass of Creator that's parameterized by the Product class.
+
+5. *Naming conventions*. It's good practice to use naming conventions that make it clear you're using factory methods.
+
+# Sample Code
+
+To better understand the following code and the classes used look 
+
+[**>>> here🔗! <<<**](https://github.com/FedericoBruzzone/medium/tree/main/commoncode)
+
+The function [*CreateMaze*](https://github.com/FedericoBruzzone/medium/tree/main/commoncode) builds and returns a maze. One problem with this function is that it hard-codes the classes of maze, rooms, doors, and walls.We'll introduce factory methods to let subclasses choose these components. 
+
+First we'll define factory methods in *MazeGame* for creating the maze,room,wall, and door objects:
+
+```Java
+import commoncode.*;
+
+public class MazeGame_Factory {
+  
+  public MazeGame_Factory() {}
+  
+  public Maze MakeMaze() 
+    { return new Maze(); }
+  
+  public Wall MakeWall() 
+    { return new Wall(); }
+  
+  public Room MakeRoom(int n) 
+    { return new Room(n); }
+  
+  public Door MakeDoor(Room r1, Room r2)
+    { return new Door(r1, r2); }
+  
+  public Maze CreateMaze() {
+    Maze aMaze   = this.MakeMaze();
+    Room r1      = this.MakeRoom(1);
+    Room r2      = this.MakeRoom(2);
+    Door theDoor = this.MakeDoor(r1, r2);
+
+    r1.SetSide(Direction.North, this.MakeWall());
+    r1.SetSide(Direction.East,  theDoor);
+    r1.SetSide(Direction.South, this.MakeWall());
+    r1.SetSide(Direction.West,  this.MakeWall());
+
+    r2.SetSide(Direction.North, this.MakeWall());
+    r2.SetSide(Direction.East,  this.MakeWall());
+    r2.SetSide(Direction.South, this.MakeWall());
+    r2.SetSide(Direction.West,  theDoor);
+
+    aMaze.AddRoom(r1);
+    aMaze.AddRoom(r2);
+
+    return aMaze;
+  }
+
+} 
+```
+
+Each factory method returns a maze component of a given type. *MazeGame* provides default implementations that return the simplest kinds of maze, rooms, walls, and doors. 
+
+Now we have to rewrite *CreateMaze* to use these factory methods.
+
+# Known Uses
+
+Factory methods pervade toolkits and frameworks.The preceding document example is a typical use in MacApp and ET++ [WGM88]. The manipulator example is from Unidraw.
+
+Class View in the Smalltalk-80 Model/View/Controller framework has a method defaultController that creates a controller, and this might appear to be a factory method [Par90]. But subclasses of Viewspecify the class of their default controller by defining defaultControllerClass, which returns the class from which defaultController creates instances. So defaultControllerClass is the real factory method, tKat is, the method that subclasses should override.
+
+# Related Patterns
+
+Abstract Factory is often implemented with factory methods. 
+
+Factory methods are usually called within Template Methods. 
+
+Prototypes don't require subclassing Creator. However, they often require an Initialize operation on the Product class. Creator uses Initialize to initialize the object. Factory Method doesn't require such an operation.

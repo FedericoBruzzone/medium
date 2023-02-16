@@ -21,8 +21,16 @@ By **Dmitry Zhart** ([refactoring.guru](https://refactoring.guru/))
 
 # Structure
 
+![](https://github.com/FedericoBruzzone/medium/blob/main/prototype%20-%20Object%20Creational/img/2.png)
+
 # Collaborations
 
 # Consequences
 
 # Implementation
+
+# Sample Code
+
+# Known Uses
+
+# Related Patterns

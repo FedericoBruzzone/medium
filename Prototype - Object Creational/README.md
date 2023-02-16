@@ -2,7 +2,7 @@
 
 ## A summary of GoF Design Patters
 
-![](https://github.com/FedericoBruzzone/medium/blob/main/prototype%20-%20Object%20Creational/img/cover.png)
+![](https://github.com/FedericoBruzzone/medium/blob/main/Prototype%20-%20Object%20Creational/img/cover.png)
 
 By **Dmitry Zhart** ([refactoring.guru](https://refactoring.guru/))
 
@@ -14,14 +14,14 @@ By **Dmitry Zhart** ([refactoring.guru](https://refactoring.guru/))
 
 # Motivation
 
-![](https://github.com/FedericoBruzzone/medium/blob/main/prototype%20-%20Object%20Creational/img/1.png)
+![](https://github.com/FedericoBruzzone/medium/blob/main/Prototype%20-%20Object%20Creational/img/1.png)
 
 
 # Applicability
 
 # Structure
 
-![](https://github.com/FedericoBruzzone/medium/blob/main/prototype%20-%20Object%20Creational/img/2.png)
+![](https://github.com/FedericoBruzzone/medium/blob/main/Prototype%20-%20Object%20Creational/img/2.png)
 
 # Collaborations
 

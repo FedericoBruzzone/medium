@@ -6,4 +6,8 @@ public class Wall extends MapSite {
 
   public void Enter() {}
 
+  public void initializer() {}
+
+  public Wall clone() { return null; }
+
 }

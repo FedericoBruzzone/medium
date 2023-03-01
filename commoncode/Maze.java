@@ -8,4 +8,8 @@ public class Maze {
  
   public Room RoomNo(int roomNo) { return null; }
 
+  public void initializer() {}
+
+  public Maze clone() { return null; }
+
 }

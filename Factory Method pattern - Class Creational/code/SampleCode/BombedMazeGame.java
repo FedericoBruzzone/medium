@@ -1,4 +1,4 @@
-import commoncode.*;;
+import commoncode.*;
 
 public class BombedMazeGame extends MazeGame_Factory {
   
